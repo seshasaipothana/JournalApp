@@ -32,7 +32,7 @@ public class JAppApplication {
 		return new RestTemplate();
 
 
-		
+
 	}
 
 }
