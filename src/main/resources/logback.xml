@@ -1,0 +1,33 @@
+<configuration>
+    <appender name = "myConsoleAppender" class = "ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+    <!--this FileAppender appender wont create new file it just takes the old file adds the logs to it -->
+    <!--appender name="myFileAppender" class= "ch.qos.logback.core.FileAppender" -->
+    <!--this FileAppender appender  creates new file each time it just takes the old file adds the logs to it -->
+    <appender name="myFileAppender" class= "ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>
+            jApp.log
+        </file>
+        <rollingPolicy class = "ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>jApp-%d{yy-mm-dd_HH-mm}.%i.log</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+
+    </appender>
+    <root level = "INFO">
+        <appender-ref ref="myConsoleAppender"/>
+        <appender-ref ref="myFileAppender"/>
+
+    </root>
+</configuration>
