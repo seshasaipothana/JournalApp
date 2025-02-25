@@ -30,6 +30,9 @@ public class JAppApplication {
 	@Bean
 	public RestTemplate getRestTemplate(){
 		return new RestTemplate();
+
+
+		
 	}
 
 }
